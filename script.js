@@ -1,6 +1,21 @@
 // Datos de los proyectos. Para agregar uno nuevo, añade un objeto a esta lista.
 const projects = [
   {
+    id: 'bits',
+    title: 'bits · NASA Space Apps',
+    period: '11/2026',
+    kind: 'Videojuego educativo sobre misiones CubeSat (NASA Space Apps Challenge 2026)',
+    text: 'Videojuego 2D en Godot 4, hecho en un equipo de 5 personas, que enseña cómo se diseña y se lanza un CubeSat. Tiene cinco planetas y en cada uno se aprende un tema de ingeniería espacial: energía, propulsión, térmica, comunicaciones y gestión de riesgos. Las preguntas y los riesgos salen de datos reales de la NASA. Está en español e inglés y busca educar sobre los ODS 7, 9, 13 y 17.',
+    role: 'Mi rol: desarrollador de backend y enlaces de datos.',
+    points: [
+      'Conecté el juego con la base de datos de Supabase mediante su API REST para cargar en tiempo real las preguntas y los riesgos de la NASA.',
+      'Hice que el juego siga funcionando sin internet, con una copia local de los datos.',
+      'Implementé la selección de preguntas al azar por tema y la versión bilingüe de los datos.',
+      'Integré los recursos del equipo (mapas, música, personajes) y gestioné las ramas y versiones en GitHub.'
+    ],
+    stack: ['Godot 4', 'GDScript', 'Supabase', 'API REST', 'Git', 'GitHub']
+  },
+  {
     id: 'auren',
     title: 'AUREN',
     period: '09/2026 – actualidad',
@@ -17,15 +32,15 @@ const projects = [
     id: 'solar',
     title: 'Simulador de Sistemas Fotovoltaicos',
     period: '2026',
-    kind: 'Aplicación web interactiva',
-    text: 'Herramienta para entender y evaluar sistemas de energía solar, organizada en cinco módulos.',
+    kind: 'Aplicación web interactiva (informe de Física de Campos)',
+    text: 'Herramienta para evaluar paneles solares en los locales del Barrio Galán, Barranquilla, organizada en cinco módulos.',
     points: [
-      'Simulación energética y análisis climático.',
-      'Visualización de modelos 3D.',
-      'Cálculo de retorno de inversión.',
-      'Explicación de los fundamentos físicos.'
+      'Simulador de retorno de la inversión según el consumo y el tipo de techo.',
+      'Comparación de locales con gráficas de consumo frente a generación.',
+      'Cálculos de física de campos: corriente, campo magnético, campo eléctrico y efecto Joule.',
+      'Pronóstico del clima en vivo y modelos 3D en Tinkercad.'
     ],
-    stack: ['HTML', 'CSS', 'JavaScript', 'Git', 'GitHub Pages']
+    stack: ['HTML', 'CSS', 'JavaScript', 'Chart.js', 'API de Open-Meteo', 'Pruebas con Node.js', 'GitHub Pages']
   },
   {
     id: 'eco',
@@ -35,7 +50,7 @@ const projects = [
     text: 'Aplicación orientada a proteger la fauna, con cuatro módulos pensados para visitantes y para quienes cuidan el entorno.',
     points: [
       'Mapa interactivo.',
-      'Sistema de reportes en tiempo real.',
+      'Sistema de reportes ciudadanos.',
       'Base de datos de fauna.',
       'Información educativa para visitantes.'
     ],
@@ -99,7 +114,11 @@ function renderDetail() {
   detailEl.append(
     el('p', 'p-kind', p.kind),
     el('h3', '', p.title),
-    el('p', 'p-text', p.text),
+    el('p', 'p-text', p.text)
+  );
+  // El rol es opcional: solo se muestra en proyectos de equipo que lo indiquen.
+  if (p.role) detailEl.append(el('p', 'p-role', p.role));
+  detailEl.append(
     points,
     el('h4', '', 'Tecnologías'),
     stack

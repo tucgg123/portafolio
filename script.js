@@ -2,6 +2,8 @@
 const projects = [
   {
     id: 'bits',
+    url: 'https://tucgg123.itch.io/bits-hackaton-big-hero',
+    linkLabel: 'Jugar en itch.io',
     title: 'bits · NASA Space Apps',
     period: '11/2026',
     kind: 'Videojuego educativo sobre misiones CubeSat (NASA Space Apps Challenge 2026)',
@@ -17,6 +19,8 @@ const projects = [
   },
   {
     id: 'auren',
+    url: 'https://auren-v2.netlify.app/',
+    linkLabel: 'Ver AUREN',
     title: 'AUREN',
     period: '09/2026 – actualidad',
     kind: 'Plataforma educativa con IA (demo funcional)',
@@ -30,6 +34,8 @@ const projects = [
   },
   {
     id: 'solar',
+    url: 'https://tucgg123.github.io/Simulador-Fisica-de-Campos/',
+    linkLabel: 'Abrir el simulador',
     title: 'Simulador de Sistemas Fotovoltaicos',
     period: '2026',
     kind: 'Aplicación web interactiva (informe de Física de Campos)',
@@ -44,20 +50,24 @@ const projects = [
   },
   {
     id: 'eco',
+    url: 'https://tucgg123.github.io/EcoMallorquin/',
+    linkLabel: 'Ver EcoMallorquín',
     title: 'EcoMallorquín',
     period: '2025',
     kind: 'Aplicación web de conservación ambiental',
     text: 'Aplicación orientada a proteger la fauna, con cuatro módulos pensados para visitantes y para quienes cuidan el entorno.',
     points: [
       'Mapa interactivo.',
-      'Sistema de reportes ciudadanos.',
+      'Formulario de reportes ciudadanos.',
       'Base de datos de fauna.',
       'Información educativa para visitantes.'
     ],
-    stack: ['HTML', 'CSS', 'JavaScript', 'Git', 'GitHub Pages']
+    stack: ['HTML', 'CSS', 'JavaScript', 'Leaflet', 'OpenStreetMap', 'GitHub Pages']
   },
   {
     id: 'signo',
+    url: 'https://tucgg123.github.io/SignoGlove/es/index.html',
+    linkLabel: 'Ver SignoGlove',
     title: 'SignoGlove',
     period: '2024',
     kind: 'Sistema de asistencia para accesibilidad (software + hardware)',
@@ -67,7 +77,7 @@ const projects = [
       'Procesamiento de gestos.',
       'Reproducción automática de frases.'
     ],
-    stack: ['HTML', 'CSS', 'JavaScript', 'Micro:Bit', 'Bluetooth', 'Git', 'GitHub Pages']
+    stack: ['HTML', 'CSS', 'JavaScript', 'Micro:Bit', 'Web Bluetooth', 'GitHub Pages']
   }
 ];
 
@@ -123,6 +133,14 @@ function renderDetail() {
     el('h4', '', 'Tecnologías'),
     stack
   );
+  // Enlace al proyecto publicado (se abre en otra pestaña).
+  if (p.url) {
+    const linkEl = el('a', 'btn btn-primary p-link', p.linkLabel || 'Ver proyecto');
+    linkEl.href = p.url;
+    linkEl.target = '_blank';
+    linkEl.rel = 'noopener';
+    detailEl.append(linkEl);
+  }
 }
 
 renderList();

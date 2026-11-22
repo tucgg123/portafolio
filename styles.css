@@ -270,3 +270,4 @@ button { font-family: inherit; }
   html { scroll-behavior: auto; }
 }
 .project-detail .p-role { margin: -12px 0 20px; font-weight: 600; color: var(--teal); }
+.project-detail .p-link { margin-top: 28px; }
